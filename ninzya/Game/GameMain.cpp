@@ -43,12 +43,6 @@ void InitializeGame(void)
 {
 	//ƒV[ƒ“‚Ì‰Šú‰»
 	base = new GamePlay();
-
-	//@‰æ‘œ‚Ì“Ç‚İ‚İ 
-	g_grpHandle = new Texture(L"Resources\\Images\\TridentLogo.png");
-	g_PongImage = new Texture(L"Resources\\Images\\PongImage.png");
-	g_logo		= new Texture(L"Resources\\Images\\TridentLogo.png");
-
 }
 
 //----------------------------------------------------------------------

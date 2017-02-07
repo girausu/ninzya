@@ -47,10 +47,6 @@ void RenderGame(void);
 void FinalizeGame(void);
 
 // グローバル変数の定義 ====================================================
-EXTERN Texture *g_grpHandle;			// グラフィック
-EXTERN Texture *g_PongImage;			// ポン画像
-EXTERN Texture *g_logo;					//トライデントロゴ
-
 EXTERN int g_key_code;					//キー情報
 EXTERN int g_key_old;					//前フレームのキー情報
 									

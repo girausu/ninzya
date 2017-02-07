@@ -9,13 +9,14 @@
 //__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
 
 #include "GameBase.h"
-#include "..//Object/ObjectBase.h"
+#include "..//Object//Character/Player//Player.h"
 
 #pragma once // 多重インクルードの防止
 
 class GamePlay : public GameBase
 {
 private:
+	Player* m_player;
 
 public:
 		GamePlay();

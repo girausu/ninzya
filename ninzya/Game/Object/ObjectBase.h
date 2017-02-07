@@ -55,9 +55,4 @@ public:
 	int   GetGrpH();		//高さ
 	int	  GetGrpW();		//幅
 	int	  GetState();		//状態  
-	
-	//移動
-	void keyMove();		//キーボード操作
-	void mouseMove();	//マウス
-
 };
