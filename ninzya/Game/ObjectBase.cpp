@@ -283,22 +283,3 @@ void ObjectBase::mouseMove()
 	//}
 }
 
-//----------------------------------------------------------------------
-//! @brief 箱と箱のあたり判定
-//!
-//! @param[in] 判定を取りたいオブジェクト
-//!
-//! @return 当たったか
-//----------------------------------------------------------------------
-//当たり判定
-bool ObjectBase::HitBox(ObjectBase* obj)
-{
-	if ((m_pos_x <= obj->GetPosX() + obj->GetGrpW()) &&
-		 m_pos_x >= obj->GetPosX()				     &&
-		 m_pos_x <= obj->GetPosY() + obj->GetGrpH()  &&
-		 m_pos_y >= obj->GetPosY()				  )
-	{
-		return true; //当たっていたらtrueを返す
-	}
-	else { return false; } //当たっていなかったらfalseを返す
-}
