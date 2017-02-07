@@ -15,7 +15,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include "GamePlay.h"
+#include "Scene\GamePlay.h"
 
 using namespace DirectX::SimpleMath;
 using namespace DirectX;

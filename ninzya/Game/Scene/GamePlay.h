@@ -9,7 +9,7 @@
 //__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
 
 #include "GameBase.h"
-#include "ObjectBase.h"
+#include "..//Object/ObjectBase.h"
 
 #pragma once // 多重インクルードの防止
 

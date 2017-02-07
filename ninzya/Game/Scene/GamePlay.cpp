@@ -9,7 +9,7 @@
 //__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
 
 // ヘッダファイルの読み込み ================================================
-#include "GameMain.h"
+#include "..//GameMain.h"
 #include "GamePlay.h"
 
 using namespace DirectX::SimpleMath;

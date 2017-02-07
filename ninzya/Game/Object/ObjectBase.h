@@ -9,7 +9,7 @@
 //__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
 #pragma once
 
-#include "GameMain.h"
+#include "..//GameMain.h"
 #include <string>
 #include <sstream>
 
