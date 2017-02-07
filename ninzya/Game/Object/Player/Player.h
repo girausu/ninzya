@@ -14,9 +14,9 @@ class Player : public ObjectBase
 private:
 
 public:
-	Player();
-	~Player();
+	Player();	//コンストラクタ
+	~Player();	//デストラクタ
 
-
-
+	void Update();
+	void Render();
 };
