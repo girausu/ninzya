@@ -12,6 +12,8 @@
 class Player : public ObjectBase
 {
 private:
+	int m_gravity;	//重力
+	int m_time;
 
 public:
 	Player();	//コンストラクタ
@@ -22,4 +24,5 @@ public:
 
 	void keyMove();	//キーボード操作
 	void setRect();	//切り出し範囲を変える
+	void gravity();	//重力を反映させる
 };

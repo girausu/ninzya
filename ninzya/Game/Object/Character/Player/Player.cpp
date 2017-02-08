@@ -25,7 +25,7 @@ Player::Player()
 	m_handle = new Texture(L"Resources\\Images\\Character\\Player\\move.png");
 	m_grp_x = 0;
 	m_grp_y = 0;
-	m_grp_w = 90;
+	m_grp_w = 90 ;
 	m_grp_h = 130;
 	m_pos_x = 0;
 	m_pos_y = 0;
@@ -33,6 +33,9 @@ Player::Player()
 	m_spd_y = 0;
 	m_state = 1;
 	m_rect = { m_grp_x, m_grp_y, m_grp_w, m_grp_h };
+
+	m_gravity = 0.5;
+	m_time = 0;
 }
 
 //----------------------------------------------------------------------
@@ -69,6 +72,7 @@ void Player::Update()
 	//移動
 	m_pos_x += m_spd_x;
 	m_pos_y += m_spd_y;
+	
 }
 
 //----------------------------------------------------------------------
@@ -80,15 +84,17 @@ void Player::Update()
 //----------------------------------------------------------------------
 void Player::Render()
 {
-	m_rect = { m_grp_x, m_grp_y, m_grp_w, m_grp_h };
 
-	DrawObject(m_handle, m_pos_x, m_pos_y, m_rect);
+	//DrawObject(m_handle, m_pos_x, m_pos_y, m_rect);
 
 	//ハンドル 座標XY 切り出す範囲, 色, ラジアン値, 回転の中心座標, 拡大倍率
 	//g_spriteBatch->Draw(m_handle->m_pTexture, Vector2(0, 0), &rect, Colors::White, 0.0f, Vector2(0, 0), Vector2(1, 1));
 
-	//g_spriteBatch->Draw(m_handle->m_pTexture, Vector2(m_pos_x, m_pos_y), &m_rect, 
-	//					Colors::White, 0.0f,  Vector2(0, 0), Vector2(0.5f, 0.5f));
+	if (m_state != 0)
+	{
+		g_spriteBatch->Draw(m_handle->m_pTexture, Vector2(m_pos_x, m_pos_y), &m_rect,
+			Colors::White, 0.0f, Vector2(0, 0), Vector2(0.5f, 0.5f));
+	}
 }
 
 //--------------------Update(),Render()以外の関数を定義---------------//
@@ -116,6 +122,11 @@ void Player::keyMove()
 		else if (g_key.Up)
 		{
 			m_spd_y = -5;
+
+			if (m_state == 1)
+			{
+				m_state = 2;
+			}
 		}
 		else if (g_key.Down)
 		{
@@ -136,17 +147,17 @@ void Player::setRect()
 	if (g_key.Right)
 	{
 		//m_grp_x = 0;
-		m_grp_y = 270;
+		m_grp_y = 390;
 	}
 	else if (g_key.Left)
 	{
 		//m_grp_x = 0;
-		m_grp_y = 0;
+		m_grp_y = 260;
 	}
 	else if (g_key.Up)
 	{
 		//m_grp_x = 0;
-		m_grp_y = 90;
+		m_grp_y = 130;
 	}
 	else if (g_key.Down)
 	{
@@ -154,4 +165,36 @@ void Player::setRect()
 		m_grp_y = 0;
 	}
 
+	m_rect = { m_grp_x, m_grp_y, m_grp_w + m_grp_x, m_grp_h + m_grp_y};
 }
+
+//----------------------------------------------------------------------
+//! @brief キーボードでの入力に応じて画像の切り抜き範囲を変える
+//!
+//! @param[in] なし
+//!
+//! @return なし
+//----------------------------------------------------------------------
+void Player::gravity()
+{
+	if (m_state == 2)
+	{
+		m_spd_y += m_gravity;
+
+		m_gravity += 0.5;
+
+		m_time++;
+
+		if (m_time >= 60)
+		{
+			m_state = 1;
+		}
+	}
+
+	if (m_state == 1)
+	{
+		m_gravity = 0.5;
+		m_time = 0;
+	}
+}
+
