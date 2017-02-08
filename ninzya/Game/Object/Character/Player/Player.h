@@ -17,9 +17,9 @@ public:
 	Player();	//コンストラクタ
 	~Player();	//デストラクタ
 
-	//移動
-	void keyMove();		//キーボード操作
-
 	void Update();
 	void Render();
+
+	void keyMove();	//キーボード操作
+	void setRect();	//切り出し範囲を変える
 };
