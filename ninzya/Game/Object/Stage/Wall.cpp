@@ -16,7 +16,6 @@
 //! @return ‚È‚µ
 //----------------------------------------------------------------------
 Wall::Wall()
-	:ObjectBase()
 {
 	m_handle = new Texture(L"Resources\\Images\\Stage\\wall.png");
 
@@ -55,5 +54,4 @@ void Wall::Update()
 void Wall::Render()
 {
 	DrawObject(m_handle, m_pos_x, m_pos_y, m_rect);
-
 }

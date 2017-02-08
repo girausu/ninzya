@@ -10,6 +10,8 @@
 
 #include "GameBase.h"
 #include "..//Object//Character/Player//Player.h"
+#include "..//Object//Stage//Floor.h"
+#include "..//Object//Stage//Wall.h"
 
 #pragma once // 多重インクルードの防止
 
@@ -25,5 +27,7 @@ public:
 		
 		void Update();	//アップデート
 		void Render();	//レンダー
+
+		void createMap();	//マップ生成
 };
 

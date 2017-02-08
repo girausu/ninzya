@@ -37,8 +37,6 @@ public:
 	virtual void Update();	//更新
 	virtual void Render();	//描画
 
-	void DrawObject(Texture* tex, float pos_x, float pos_y, RECT rect);	//表示
-
 	//設定
 	void SetPos(float x, float y);	//座標X,Yを同時に設定
 	void SetPosX(float x);			//座標X

@@ -47,11 +47,14 @@ void RenderGame(void);
 // ゲームの終了処理
 void FinalizeGame(void);
 
+//オブジェクトの描画
+void DrawObject(Texture* tex, float pos_x, float pos_y, RECT rect);	//表示
+
 //データの読み込み
 void importDate(std::string filename);
 
 // グローバル変数の定義 ====================================================
 EXTERN int g_key_code;					//キー情報
 EXTERN int g_key_old;					//前フレームのキー情報
-									
+EXTERN int g_map[15][20];				// マップ
 

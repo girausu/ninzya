@@ -15,27 +15,27 @@
 
 struct MAX_TIP
 {
-	const static int MAX_TIP_W;
-	const static int MAX_TIP_H;
+	const static int MAX_TIP_W = 15;
+	const static int MAX_TIP_H = 20;
 };
 
-class StageBase
+class StageBase 
 {
-private:
+protected:
 	int m_mapTip[15][20];
 
-	Texture* m_texture;
+	Texture* m_handle;	
 	float m_pos_x;
 	float m_pos_y;
 	float m_grp_x;
 	float m_grp_y;
 	float m_grp_h;
 	float m_grp_w;
-	float m_state;
+	int m_state;
+	RECT m_rect;
 
 public:
 	StageBase();
 	~StageBase();
 
-	void importDate(std::string filename);	//ÉfÅ[É^ÇÃì«Ç›çûÇ›
 };

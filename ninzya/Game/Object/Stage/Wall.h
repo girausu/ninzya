@@ -7,10 +7,9 @@
 //__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
 #pragma once
 
-#include "..//..//GameMain.h"
-#include "..//ObjectBase.h"
+#include "StageBase.h"
 
-class Wall : public ObjectBase
+class Wall : public StageBase
 {
 private:
 
