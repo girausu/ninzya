@@ -24,6 +24,7 @@
 #endif
 
 // 定数の定義 ==============================================================
+static const int MAX_TIP = 300;
 
 // ゲームタイトル
 #define GAME_TITLE "thousand"
@@ -45,6 +46,9 @@ void RenderGame(void);
 
 // ゲームの終了処理
 void FinalizeGame(void);
+
+//データの読み込み
+void importDate(std::string filename);
 
 // グローバル変数の定義 ====================================================
 EXTERN int g_key_code;					//キー情報
