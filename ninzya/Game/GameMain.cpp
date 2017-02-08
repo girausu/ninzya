@@ -21,10 +21,6 @@ using namespace DirectX::SimpleMath;
 using namespace DirectX;
 using namespace std;
 
-// 画面解像度
-static const int WINDOW_W = 640;
-static const int WINDOW_H = 480;
-
 // プロトタイプ宣言 ====================================================
 
 // グローバル変数の定義 ====================================================

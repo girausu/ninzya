@@ -8,12 +8,15 @@
 #pragma once
 #include "Game//Object//ObjectBase.h"
 
-class Floor
+class Floor : ObjectBase
 {
 private:
 
 public:
 	Floor();
 	~Floor();
+
+	void Update();
+	void Render();
 
 };

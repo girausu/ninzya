@@ -19,22 +19,23 @@ using namespace DirectX;
 //! @return なし
 //----------------------------------------------------------------------
 Player::Player()
+	   :ObjectBase()
 {
 	//\Resources\Images\Character\Player
 	//各変数の設定
 	m_handle = new Texture(L"Resources\\Images\\Character\\Player\\move.png");
-	m_grp_x = 0;
-	m_grp_y = 0;
+	//m_grp_x = 0;
+	//m_grp_y = 0;
 	m_grp_w = 90 ;
 	m_grp_h = 130;
-	m_pos_x = 0;
-	m_pos_y = 0;
-	m_spd_x = 0;
-	m_spd_y = 0;
-	m_state = 1;
+	//m_pos_x = 0;
+	//m_pos_y = 0;
+	//m_spd_x = 0;
+	//m_spd_y = 0;
+	//m_state = 1;
 	m_rect = { m_grp_x, m_grp_y, m_grp_w, m_grp_h };
 
-	m_gravity = 0.5;
+	m_gravity = 0.5f;
 	m_time = 0;
 }
 
@@ -59,6 +60,12 @@ Player::~Player()
 //----------------------------------------------------------------------
 void Player::Update()
 {
+	//スペースキーでプレイヤーの初期化
+	if (g_key.Space)
+	{
+
+	}
+
 	//速度の初期化
 	m_spd_x = 0;
 	m_spd_y = 0;
@@ -68,6 +75,9 @@ void Player::Update()
 	
 	//画像の切り抜き範囲を指定
 	setRect();
+
+	//プレイヤーに重力を適用
+	gravity();
 
 	//移動
 	m_pos_x += m_spd_x;
@@ -177,23 +187,24 @@ void Player::setRect()
 //----------------------------------------------------------------------
 void Player::gravity()
 {
+	//ジャンプしている場合
 	if (m_state == 2)
 	{
+		//重力をYに足す
 		m_spd_y += m_gravity;
-
-		m_gravity += 0.5;
+		m_gravity += 0.15f;
 
 		m_time++;
-
 		if (m_time >= 60)
 		{
 			m_state = 1;
 		}
 	}
 
+	//ジャンプしていない場合重力を初期化
 	if (m_state == 1)
 	{
-		m_gravity = 0.5;
+		m_gravity = 0.5f;
 		m_time = 0;
 	}
 }

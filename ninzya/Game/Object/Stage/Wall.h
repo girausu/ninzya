@@ -20,6 +20,8 @@ public:
 	Wall();
 	~Wall();
 
+	void Update();
+	void Render();
 };
 
 //Œp³‚µ‚½•Ï”

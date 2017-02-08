@@ -12,7 +12,7 @@
 class Player : public ObjectBase
 {
 private:
-	int m_gravity;	//d—Í
+	float m_gravity; //d—Í
 	int m_time;
 
 public:

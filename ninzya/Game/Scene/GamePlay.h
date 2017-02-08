@@ -16,7 +16,8 @@
 class GamePlay : public GameBase
 {
 private:
-	Player* m_player;
+	//Player* m_player;
+	ObjectBase* m_player;
 
 public:
 		GamePlay();
