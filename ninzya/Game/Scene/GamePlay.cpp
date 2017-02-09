@@ -74,5 +74,21 @@ void GamePlay::Render()
 //----------------------------------------------------------------------
 void GamePlay::createMap()
 {
-	for (int i = 0; i < )
+	for (int i = 0; i < MAX_TIP::MAX_TIP_H; i++)
+	{
+		for (int j = 0; j < MAX_TIP::MAX_TIP_W; j++)
+		{
+			switch (g_map[i][j])
+			{
+			case 0:
+				break;
+
+			case 1:
+				break;
+
+			case 2:
+				break;
+			}
+		}
+	}
 }
