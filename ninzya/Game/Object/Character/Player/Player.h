@@ -25,4 +25,6 @@ public:
 	void keyMove();	//キーボード操作
 	void setRect();	//切り出し範囲を変える
 	void gravity();	//重力を反映させる
+
+	bool collisionStage(StageBase* stage);	//あたり判定
 };

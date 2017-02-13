@@ -10,6 +10,7 @@
 #pragma once
 
 #include "..//GameMain.h"
+#include "Stage//StageBase.h"
 #include <string>
 #include <sstream>
 
@@ -52,5 +53,5 @@ public:
 	float GetSpdY();		//‘¬“xY
 	int   GetGrpH();		//‚‚³
 	int	  GetGrpW();		//•
-	int	  GetState();		//ó‘Ô  
+	int	  GetState();		//ó‘Ô
 };

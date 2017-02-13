@@ -19,8 +19,9 @@ class GamePlay : public GameBase
 {
 private:
 	//Player* m_player;
-	ObjectBase* m_player;
-
+	Player* m_player;			//プレイヤー
+	StageBase*  m_stage[15][20];	//ステージ
+		
 public:
 		GamePlay();
 		~GamePlay();
@@ -29,5 +30,6 @@ public:
 		void Render();	//レンダー
 
 		void createMap();	//マップ生成
+
 };
 

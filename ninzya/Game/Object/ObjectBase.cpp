@@ -223,4 +223,26 @@ int ObjectBase::GetState()
 	return m_state;
 }
 
-
+//----------------------------------------------------------------------
+//! @brief ステージとの当たり判定
+//!
+//! @param[in] なし
+//!
+//! @return なし
+//----------------------------------------------------------------------
+//bool ObjectBase::collisionStage(StageBase * stage)
+//{
+//	if (stage != nullptr)
+//	{
+//		if (m_pos_x	+ m_grp_w	>= stage->getPosX() &&
+//			m_pos_x				<= stage->getPosX()					 &&
+//			m_pos_y	+m_grp_h	>= stage->getPosY() + stage->getGrpH() &&
+//			m_pos_y				= stage->getPosY())
+//		{
+//			return true;
+//		}
+//		else { return false; }
+//	}
+//
+//	return false;
+//}

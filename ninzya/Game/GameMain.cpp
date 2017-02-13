@@ -37,11 +37,11 @@ GameBase* base;
 //----------------------------------------------------------------------
 void InitializeGame(void)
 {
+	//マップの読み込み
+	importDate("Resources\\Map\\simpleStage.csv");
+
 	//シーンの初期化
 	base = new GamePlay();
-
-	//マップの読み込み
-	importDate("Resources\Map\simpleStage.csv");
 }
 
 //----------------------------------------------------------------------
@@ -97,7 +97,7 @@ void DrawObject(Texture* tex, float pos_x, float pos_y, RECT rect)
 //----------------------------------------------------------------------
 //! @brief ファイルの呼び出し
 //!
-//! @param[in] xy座標，数値w
+//! @param[in]	なし	
 //!
 //! @return なし
 //----------------------------------------------------------------------

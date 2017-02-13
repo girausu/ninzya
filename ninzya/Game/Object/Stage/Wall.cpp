@@ -18,7 +18,14 @@
 Wall::Wall()
 {
 	m_handle = new Texture(L"Resources\\Images\\Stage\\wall.png");
-
+	m_pos_x = 0;
+	m_pos_y = 0;
+	m_grp_x = 0;
+	m_grp_y = 0;
+	m_grp_w = 32;
+	m_grp_h = 32;
+	m_state = 1;
+	m_rect = { m_grp_x, m_grp_y, m_grp_w, m_grp_h };
 }
 
 //----------------------------------------------------------------------
