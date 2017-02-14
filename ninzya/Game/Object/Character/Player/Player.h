@@ -13,7 +13,8 @@ class Player : public ObjectBase
 {
 private:
 	float m_gravity; //重力
-	int   m_time;
+	bool  m_jump;	 //ジャンプしているか	t = している
+	int   m_jumpCnt; //ジャンプしてからの時間のカウント
 
 public:
 	Player();	//コンストラクタ
@@ -27,4 +28,5 @@ public:
 	void gravity();	//重力を反映させる
 
 	bool collisionStage(StageBase* stage);	//あたり判定
+	void setJumpState(bool tf);				//ジャンプ状態の切り替え
 };

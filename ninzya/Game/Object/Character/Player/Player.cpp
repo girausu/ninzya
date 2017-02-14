@@ -21,7 +21,6 @@ using namespace DirectX;
 Player::Player()
 	   :ObjectBase()
 {
-	//\Resources\Images\Character\Player
 	//各変数の設定
 	m_handle = new Texture(L"Resources\\Images\\Character\\Player\\wh.png");
 	m_grp_w = 72;
@@ -30,11 +29,12 @@ Player::Player()
 	m_pos_y = 200;
 	m_spd_x = 0;
 	m_spd_y = 0;
-	m_state = 2;
+	m_state = 1;
 	m_rect = { m_grp_x, m_grp_y, m_grp_w, m_grp_h };
 
 	m_gravity = 0.03f;
-	m_time = 0;
+	m_jump    = false;
+	m_jumpCnt = 0;
 }
 
 //----------------------------------------------------------------------
@@ -58,12 +58,6 @@ Player::~Player()
 //----------------------------------------------------------------------
 void Player::Update()
 {
-	//スペースキーでプレイヤーの初期化
-	if (g_key.Space)
-	{
-
-	}
-
 	//速度の初期化
 	m_spd_x = 0;
 	m_spd_y = 0;
@@ -127,14 +121,13 @@ void Player::keyMove()
 			m_spd_x = -5;
 		}
 	
-		if (g_key.Space)
+		if (g_key.Space && m_jumpCnt < 2)
 		{
-			m_spd_y = -10;
+			m_spd_y = -30;
 
-			if (m_state == 1)
-			{
-				m_state = 2;
-			}
+			m_jumpCnt += 1;
+
+			m_jump = true;
 		}
 		
 		if (g_key.Down)
@@ -187,16 +180,19 @@ void Player::setRect()
 void Player::gravity()
 {
 	//ジャンプしている場合
-	if (m_state == 2)
+	if (m_jump == true)
 	{
 		//重力をYに足す
 		m_spd_y   += m_gravity;
-		m_gravity += 0.1f;
+		m_gravity += 0.05f;
 	}	//ジャンプしていない場合
-	else if (m_state == 1)
+	else if (m_jump == false)
 	{
 		//重力を初期化
 		m_gravity = 0.03f;
+		
+		//ジャンプ回数を初期化
+		m_jumpCnt = 0;
 	}
 }
 
@@ -221,3 +217,14 @@ bool Player::collisionStage(StageBase * stage)
 	return false;
 }
 
+//----------------------------------------------------------------------
+//! @brief ジャンプ状態の切り替え
+//!
+//! @param[in] 切り替え方
+//!
+//! @return なし
+//----------------------------------------------------------------------
+void Player::setJumpState(bool tf)
+{
+	m_jump = tf;
+}

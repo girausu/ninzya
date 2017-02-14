@@ -89,30 +89,23 @@ void GamePlay::Update()
 					m_player->SetPosY(m_stage[i][j]->getPosY() - m_player->GetGrpH() / 2);
 
 					//プレイヤーを着地している状態にする
-					m_player->SetState(1);
+					m_player->setJumpState(false);
 				}
 			}	 
 
 			//ステージに当たっていない状態でステージよりも上にいたら
-			if (m_stage[i][j] != nullptr && m_player->collisionStage(m_stage[i][j]) == false )
+			if (m_stage[i][j] != nullptr && m_player->collisionStage(m_stage[i][j]) == false)
 			{
 				if (m_player->GetPosY() <= m_stage[i][j]->getPosY() && m_player->GetSpdY() == 0)
 				{
-						m_player->SetState(2);
+					m_player->setJumpState(true);
 				}
 			}
 		}
 	}
 
 	float spd;
-	spd = m_player->GetSpdY();
-	//for (int i = 0; i < MAX_TIP::MAX_TIP_H; i++)
-	//{
-	//	for (int j = 0; i < MAX_TIP::MAX_TIP_W; j++)
-	//	{
-	//		m_stage[i][j]->Update();
-	//	}
-	//}
+     	spd = m_player->GetSpdY();
 }
 
 //----------------------------------------------------------------------
@@ -148,7 +141,6 @@ void GamePlay::Render()
 //----------------------------------------------------------------------
 void GamePlay::createMap()
 {
-
 	for (int i = 0; i < MAX_TIP::MAX_TIP_H; i++)
 	{
 		for (int j = 0; j < MAX_TIP::MAX_TIP_W; j++)
