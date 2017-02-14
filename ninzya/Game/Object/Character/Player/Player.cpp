@@ -74,6 +74,8 @@ void Player::Update()
 	//à⁄ìÆ
 	m_pos_x += m_spd_x;
 	m_pos_y += m_spd_y;
+
+
 }
 
 //----------------------------------------------------------------------
@@ -206,11 +208,10 @@ void Player::gravity()
 bool Player::collisionStage(StageBase * stage)
 {
 	//ëÂÇ´Ç≥Çîºï™Ç…ÇµÇƒÇ¢ÇÈÇÃÇ≈ 2Ç≈äÑÇÈ
-
-	if (stage->getPosX()					<= m_pos_x + m_grp_w / 2	&&	//âEë§
-		stage->getPosX() + stage->getGrpW() >= m_pos_x				&&		//ç∂ë§
-		stage->getPosY()					<= m_pos_y + m_grp_h / 2	&&	//â∫ë§
-		stage->getPosY() + stage->getGrpH() >= m_pos_y)						//è„ë§
+	if (stage->getPosX()					<= m_pos_x + m_grp_w / 2 &&	//âEë§
+		stage->getPosX() + stage->getGrpW() >= m_pos_x				 &&	//ç∂ë§
+		stage->getPosY()					<= m_pos_y + m_grp_h / 2 &&	//â∫ë§
+		stage->getPosY() + stage->getGrpH() >= m_pos_y)					//è„ë§
 	{
 		return true;
 	}

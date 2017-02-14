@@ -9,7 +9,8 @@
 //__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
 
 #include "GameBase.h"
-#include "..//Object//Character/Player//Player.h"
+#include "..//Object//Character//Player//Player.h"
+#include "..//Object//Character//Enemy//Enemy.h"
 #include "..//Object//Stage//Floor.h"
 #include "..//Object//Stage//Wall.h"
 
@@ -18,8 +19,8 @@
 class GamePlay : public GameBase
 {
 private:
-	//Player* m_player;
-	Player* m_player;			//プレイヤー
+	Player*		m_player;			//プレイヤー
+	Enemy*		m_enemy;			//敵
 	StageBase*  m_stage[15][20];	//ステージ
 		
 public:

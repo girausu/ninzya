@@ -24,6 +24,8 @@ ObjectBase::ObjectBase()
 {
 	m_grp_x = 0;
 	m_grp_y = 0;
+	m_grp_h = 0;
+	m_grp_w = 0;
 	m_pos_x = 0;
 	m_pos_y = 0;
 	m_spd_x = 0;

@@ -8,6 +8,7 @@
 #pragma once
 
 #include "..//..//ObjectBase.h"
+#include "..//..//Stage//StageBase.h"
 
 class Player : public ObjectBase
 {

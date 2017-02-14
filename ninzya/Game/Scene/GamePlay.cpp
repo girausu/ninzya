@@ -24,7 +24,9 @@ using namespace DirectX;
 //----------------------------------------------------------------------
 GamePlay::GamePlay()
 {
+	//----------------------オブジェクトの生成-----------------------//
 	m_player = new Player();
+	m_enemy  = new Enemy();
 
 	for (int i = 0; i < MAX_TIP::MAX_TIP_H; i++)
 	{
@@ -33,8 +35,6 @@ GamePlay::GamePlay()
 			m_stage[i][j] = nullptr;
 		}
 	}
-
-	//importDate("Resources\\Map\\simpleStage.csv");
 
 	//マップの生成
 	createMap();
@@ -50,6 +50,7 @@ GamePlay::GamePlay()
 GamePlay::~GamePlay()
 {
 	delete m_player;
+	delete m_enemy;
 
 	for (int i = 0; i < MAX_TIP::MAX_TIP_H; i++)
 	{
@@ -91,7 +92,7 @@ void GamePlay::Update()
 					//プレイヤーを着地している状態にする
 					m_player->setJumpState(false);
 				}
-			}	 
+			}
 
 			//ステージに当たっていない状態でステージよりも上にいたら
 			if (m_stage[i][j] != nullptr && m_player->collisionStage(m_stage[i][j]) == false)
@@ -104,8 +105,34 @@ void GamePlay::Update()
 		}
 	}
 
+
+
+	//------------------------------敵------------------------------------//
+	
+	m_enemy->Update();
+
+	//当たり判定
+	for (int i = 0; i < MAX_TIP::MAX_TIP_H; i++)
+	{
+		for (int j = 0; j < MAX_TIP::MAX_TIP_W; j++)
+		{
+			if (m_stage[i][j] != nullptr && m_enemy->collisionStage(m_stage[i][j]) == true)
+			{
+				//左に移動させる
+				if (m_enemy->GetSpdX() > 0)
+				{
+					m_enemy->SetSpdX(-5);
+				}	 //右に移動させる
+				else 
+				{
+					m_enemy->SetSpdX(5);
+				}
+			}
+		}
+	}
+
 	float spd;
-     	spd = m_player->GetSpdY();
+	spd = m_player->GetSpdY();
 }
 
 //----------------------------------------------------------------------
@@ -118,6 +145,8 @@ void GamePlay::Update()
 void GamePlay::Render()
 {
 	m_player->Render();
+
+	m_enemy->Render();
 
 	for (int i = 0; i < MAX_TIP::MAX_TIP_H; i++)
 	{
