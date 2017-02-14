@@ -34,6 +34,8 @@ GamePlay::GamePlay()
 		}
 	}
 
+	//importDate("Resources\\Map\\simpleStage.csv");
+
 	//マップの生成
 	createMap();
 }
@@ -92,9 +94,12 @@ void GamePlay::Update()
 			}	 
 
 			//ステージに当たっていない状態でステージよりも上にいたら
-			if (m_stage[i][j] != nullptr &&m_player->collisionStage(m_stage[i][j]) == false )
+			if (m_stage[i][j] != nullptr && m_player->collisionStage(m_stage[i][j]) == false )
 			{
-				m_player->SetState(2);
+				if (m_player->GetPosY() <= m_stage[i][j]->getPosY() && m_player->GetSpdY() == 0)
+				{
+						m_player->SetState(2);
+				}
 			}
 		}
 	}
@@ -155,14 +160,14 @@ void GamePlay::createMap()
 			
 			case 1:
 				m_stage[i][j] = new Floor();
-				m_stage[i][j]->setPosY(m_stage[i][j]->getGrpH() * i);
-				m_stage[i][j]->setPosX(m_stage[i][j]->getGrpW() * j);
+				m_stage[i][j]->setPosY(static_cast<float>(m_stage[i][j]->getGrpH()) * i);
+				m_stage[i][j]->setPosX(static_cast<float>(m_stage[i][j]->getGrpW()) * j);
 				break;
 				
 			case 2:
 				m_stage[i][j] = new Wall();
-				m_stage[i][j]->setPosY(m_stage[i][j]->getGrpH() * i);
-				m_stage[i][j]->setPosX(m_stage[i][j]->getGrpW() * j);
+				m_stage[i][j]->setPosY(static_cast<float>(m_stage[i][j]->getGrpH()) * i);
+				m_stage[i][j]->setPosX(static_cast<float>(m_stage[i][j]->getGrpW()) * j);
 				break;
 
 			}

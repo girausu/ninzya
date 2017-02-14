@@ -13,7 +13,7 @@ class Player : public ObjectBase
 {
 private:
 	float m_gravity; //重力
-	int m_time;
+	int   m_time;
 
 public:
 	Player();	//コンストラクタ

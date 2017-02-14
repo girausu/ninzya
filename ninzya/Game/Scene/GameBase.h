@@ -18,7 +18,7 @@ private:
 public:
 	virtual ~GameBase() {};
 
-
 	virtual void Update() = 0;	//更新処理用の仮想関数
 	virtual void Render() = 0;	//描画処理用の仮想関数
 };
+

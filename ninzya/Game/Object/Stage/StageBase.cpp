@@ -21,6 +21,7 @@ using namespace std;
 //----------------------------------------------------------------------
 StageBase::StageBase()
 {
+	importDate("Resources\\Map\\simpleStage.csv");
 }
 
 //----------------------------------------------------------------------
@@ -32,6 +33,48 @@ StageBase::StageBase()
 //----------------------------------------------------------------------
 StageBase::~StageBase()
 {
+}
+
+//----------------------------------------------------------------------
+//! @brief データの読み込み
+//!
+//! @param[in]　ファイル名
+//!
+//! @return なし
+//----------------------------------------------------------------------
+void StageBase::importDate(string filename)
+{
+
+	ifstream ifs(filename);
+	string str;
+	int i;
+
+	// 読めないとき
+	if (!ifs)
+	{
+		for (i = 0; i < MAX_TIP; i++)
+		{
+			//g_map[i / 20][i % 20] = 4;
+			m_mapTip[i / 20][i % 20] = 4;
+		}
+		return;
+	}
+	i = 0;
+	while (getline(ifs, str))
+	{
+		string token;
+		istringstream stream(str);
+
+		// 1行のうち、文字列よコンマを分割する
+		while (getline(stream, token, ','))
+		{
+			// すべては文字列として読み込まれるため
+			// 数値は変換が必要
+			//g_map[i / 20][i % 20] = atoi(token.c_str());
+			m_mapTip[i / 20][i % 20] = atoi(token.c_str());
+			i++;
+		}
+	}
 }
 
 //----------------------------------------------------------------------

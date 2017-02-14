@@ -23,7 +23,7 @@ Player::Player()
 {
 	//\Resources\Images\Character\Player
 	//各変数の設定
-	m_handle = new Texture(L"Resources\\Images\\Character\\Player\\moves.png");
+	m_handle = new Texture(L"Resources\\Images\\Character\\Player\\wh.png");
 	m_grp_w = 72;
 	m_grp_h = 112;
 	m_pos_x = 640 / 2;
@@ -33,7 +33,7 @@ Player::Player()
 	m_state = 2;
 	m_rect = { m_grp_x, m_grp_y, m_grp_w, m_grp_h };
 
-	m_gravity = 0.01f;
+	m_gravity = 0.03f;
 	m_time = 0;
 }
 
@@ -46,7 +46,7 @@ Player::Player()
 //----------------------------------------------------------------------
 Player::~Player()
 {
-
+	delete m_handle;
 }
 
 //----------------------------------------------------------------------
@@ -72,7 +72,7 @@ void Player::Update()
 	keyMove();
 	
 	//画像の切り抜き範囲を指定
-	//setRect();
+	setRect();
 
 	//プレイヤーに重力を適用
 	gravity();
@@ -127,7 +127,7 @@ void Player::keyMove()
 			m_spd_x = -5;
 		}
 	
-		if (g_key.Up)
+		if (g_key.Space)
 		{
 			m_spd_y = -10;
 
@@ -155,22 +155,22 @@ void Player::setRect()
 {
 	if (g_key.Right)
 	{
-		//m_grp_x = 0;
-		m_grp_y = 390;
+		m_handle = new Texture(L"Resources\\Images\\Character\\Player\\lr.png");
+		m_grp_y = 112;
 	}
 	else if (g_key.Left)
 	{
-		//m_grp_x = 0;
-		m_grp_y = 260;
+		m_handle = new Texture(L"Resources\\Images\\Character\\Player\\lr.png");
+		m_grp_y = 0;
 	}
 	else if (g_key.Up)
 	{
-		//m_grp_x = 0;
-		m_grp_y = 130;
+		m_handle = new Texture(L"Resources\\Images\\Character\\Player\\wh.png");
+		m_grp_y = 112;
 	}
 	else if (g_key.Down)
 	{
-		//m_grp_x = 0;
+		m_handle = new Texture(L"Resources\\Images\\Character\\Player\\wh.png");
 		m_grp_y = 0;
 	}
 
@@ -191,11 +191,12 @@ void Player::gravity()
 	{
 		//重力をYに足す
 		m_spd_y   += m_gravity;
-		m_gravity += 0.05f;
-	}	//ジャンプしていない場合重力を初期化   
+		m_gravity += 0.1f;
+	}	//ジャンプしていない場合
 	else if (m_state == 1)
 	{
-		m_gravity = 0.01f;
+		//重力を初期化
+		m_gravity = 0.03f;
 	}
 }
 

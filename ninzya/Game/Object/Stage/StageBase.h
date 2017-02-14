@@ -22,15 +22,15 @@ struct MAX_TIP
 class StageBase 
 {
 protected:
-	//int m_mapTip[15][20];
+	int m_mapTip[MAX_TIP::MAX_TIP_H][MAX_TIP::MAX_TIP_W];
 
 	Texture* m_handle;	
 	float m_pos_x;
 	float m_pos_y;
-	int m_grp_x;
-	int m_grp_y;
-	int m_grp_h;
-	int m_grp_w;
+	int   m_grp_x;
+	int   m_grp_y;
+	int   m_grp_h;
+	int   m_grp_w;
 	int   m_state;
 	RECT  m_rect;
 
@@ -40,6 +40,8 @@ public:
 
 	virtual void Update() = 0;
 	virtual void Render() = 0;
+
+	void importDate(std::string filename);
 
 	void setPosX(float x);	  //Xç¿ïWÇÃê›íË
 	void setPosY(float y);	  //Yç¿ïWÇÃê›íË
